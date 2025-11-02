@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<instrument telescop="Athena" instrume="WFI">
+<telescope>
+  // That's a first draft!
+  <raytracer>
+    <simulation_details n_photons="1000000"/>
+    <type type="lobster_eye" focal_length="600" pore_width="0.04" pore_length="2.4"/>
+    <optical path="/home/neo/Documents/theseus/sphere.stl" position_x="0" position_y="0" position_z="0"/>
+    <surface model="microfacet" type="ggx" shadowing="ggx" roughness="0.0012" shadowing_alpha="0.0012" material="IR" material_path="/home/neo/software/sixte/tools/raytracing/AtomicScatteringFactors_new.fits"/>
+    <spider spider="false" path="/home/neo/Documents/theseus/blocking_parts_trans.stl" position_x="0" position_y="0" position_z="0"/>
+    <sensor mesh="true" path="/home/neo/Documents/theseus/sensor_trans.stl" offset= "-300" sensor_x ="0" sensor_y="0" sensor_z="0"/>
+  </raytracer>
+<arf filename="athena_wfi_sixte_13rows_wo_filter_LDA_v20240209.arf"/>
+<focallength value="12.0"/>
+<fov diameter="1.0"/>
+<psf filename="athena_psf_hew9_20231211.fits"/>
+<vignetting filename="athena_vig_13rows_20231211.fits"/>
+<pha2pi filename="athena_wfi_pha2pi_v20230609.fits"/>
+<pirmf filename="athena_wfi_pirmf_v20230609.rmf"/>
+</telescope>
+
+<detector type="depfet">
+<dimensions xwidth="512" ywidth="512"/>
+<wcs xrpix="256.5" yrpix="256.5" xrval="0.0" yrval="0.0" xdelt="130.e-6" ydelt="130.e-6"/>
+<depfet integration="1.0e-6" clear="1.0e-6" settling_1="5e-7" settling_2="4e-7" type="normal"/>
+<rmf filename="athena_wfi_sixte_v20230523.rmf"/>
+<phabackground filename="sixte_wfi_particle_bkg_20230602_nxb8.pha"/>
+<split type="GAUSS" par1="11.e-6"/>
+
+<threshold_readout_lo_keV value="60.e-3"/>
+<threshold_event_lo_keV value="60.e-3"/>
+<threshold_split_lo_keV value="60.e-3"/>
+<readout mode="time">
+  <loop start="0" end="511" increment="1" variable="$i">
+    <wait time="3.9e-6"/>
+    <readoutline lineindex="$i" readoutindex="$i"/>
+  </loop>
+  <newframe/>
+</readout>
+</detector>
+</instrument>
