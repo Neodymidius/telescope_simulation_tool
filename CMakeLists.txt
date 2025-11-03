@@ -15,33 +15,28 @@ else()
   target_compile_options(compiler_flags INTERFACE -Wall -Wextra -Wpedantic)
 endif()
 
-# ---- Stub out optional/unused externals referenced by the library CMake ----
-# Keep these empty so the subproject's target_link_libraries lines remain valid.
-
-# Some versions of your library CMake may unconditionally link 'libsixt'.
-# Provide a dummy INTERFACE target so it doesn't pull real externals.
-if(NOT TARGET libsixt)
-  add_library(libsixt INTERFACE)
-endif()
-
 # ---- Add the library subdirectory ----
 add_subdirectory(src)
 
 # ---- Tool executable ----
-add_executable(raytracing_tool tools_raytracing/raytracing.cpp)
+add_executable(raytracing tools_raytracing/raytracing.cpp)
 
 # Link the tool against the library (which itself links to Embree)
-target_link_libraries(raytracing_tool PRIVATE raytracing_objects)
+target_link_libraries(raytracing PRIVATE raytracing_objects)
 
 # Add includes if your tool directly includes headers from the lib
-target_include_directories(raytracing_tool PRIVATE
+target_include_directories(raytracing PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/src
   ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+set_target_properties(raytracing PROPERTIES
+    BUILD_RPATH "${CMAKE_INSTALL_PREFIX}/lib"
+    INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib"
+)
+message(PROJECT_SOURCE_DIR="${CMAKE_INSTALL_BINDIR}")
 # ---- Install rules ----
 include(GNUInstallDirs)
-install(TARGETS raytracing_tool
-  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+install(TARGETS raytracing
+	RUNTIME DESTINATION bin
 )
-

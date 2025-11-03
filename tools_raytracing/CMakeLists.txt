@@ -6,11 +6,9 @@ IF (embree_FOUND)
     
 ENDIF ()
 
-set(TOOLS_WITHOUT_PARFILES sixteversion raytracing)
 
 set(RAYTRACING_SOURCES
         raytracing/raytracing.cpp
-        # Add new class implementations here as they are created
 )
 
 foreach(TOOL ${CPP_TOOLS})
@@ -21,18 +19,11 @@ foreach(TOOL ${CPP_TOOLS})
     endif()
 endforeach()
 
-foreach(TOOL ${C_TOOLS};${CPP_TOOLS};${EXTRA_TOOLS})
+foreach(TOOL ${CPP_TOOLS})
     target_include_directories(${TOOL} PUBLIC
-            ${EXT_INCLUDE_DIRS}
-            ${SIMPUT_INCLUDE_DIR})
-    target_link_directories(${TOOL} PUBLIC
-            ${SIMPUT_LIBRARY_DIR})
     target_link_libraries(${TOOL} PUBLIC
             compiler_flags
-            ${EXT_LIBRARIES}
-            ${SIMPUT_LIBRARIES}
-            libsixt
-            libsixtcpp)
+            )
 
     install(TARGETS ${TOOL})
     if (NOT ${TOOL} IN_LIST TOOLS_WITHOUT_PARFILES)

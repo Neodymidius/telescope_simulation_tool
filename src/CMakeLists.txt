@@ -56,17 +56,10 @@ set_property(TARGET raytracing_objects PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 target_include_directories(raytracing_objects PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}       # the raytracing directory itself
-        ${CMAKE_CURRENT_SOURCE_DIR}/..    # the parent directory where SixteVector.h resides
-        ${EXT_INCLUDE_DIRS}
-        ${SIMPUT_INCLUDE_DIR}
 )
-target_link_directories(raytracing_objects PUBLIC
-        ${SIMPUT_LIBRARY_DIR})
 target_link_libraries(raytracing_objects PUBLIC
         compiler_flags
-        ${EXT_LIBRARIES}
-        ${SIMPUT_LIBRARIES}
-        libsixt)
+        )
 
 find_package(pugixml REQUIRED)
 IF (pugixml_FOUND)
@@ -77,6 +70,7 @@ FIND_PACKAGE(embree QUIET)
 IF (embree_FOUND)
     message(STATUS "✔ Found EMBREE ${MyLib_VERSION}")
 ENDIF ()
+message(STATUS ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS raytracing_objects
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
