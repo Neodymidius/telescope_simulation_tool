@@ -132,7 +132,7 @@ RTCDevice EmbreeScene::initializeDevice()
     return device;
 }
 
-void EmbreeScene::errorFunction(void *userPtr, enum RTCError error, const char *str)
+void EmbreeScene::errorFunction([[maybe_unused]] void *userPtr, [[maybe_unused]] enum RTCError error, const char *str)
 {
     printf("error %d: %s\n", error, str);
 }

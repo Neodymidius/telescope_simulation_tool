@@ -119,6 +119,6 @@ void Hyperboloid::hyperboloidIntersectFunc(const RTCIntersectFunctionNArguments*
     rh->hit.Ng_z = -Nw.z;
 }
 
-void Hyperboloid::hyperboloidOccludedFunc(const RTCOccludedFunctionNArguments *args) {
+void Hyperboloid::hyperboloidOccludedFunc([[maybe_unused]] const RTCOccludedFunctionNArguments *args) {
 
 }

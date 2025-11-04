@@ -54,8 +54,8 @@ bool LobsterEyeOptic::embree_ray_trace(Ray &ray, int depth) {
     return false;
 }
 
-void LobsterEyeOptic::set_surface_parameter(std::string model, std::string shadowing, double factor,
-                                            double shadowing_factor) {
+void LobsterEyeOptic::set_surface_parameter([[maybe_unused]] std::string model, [[maybe_unused]] std::string shadowing, [[maybe_unused]] double factor,
+                                            [[maybe_unused]] double shadowing_factor) {
 
 }
 

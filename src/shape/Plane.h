@@ -32,7 +32,7 @@ public:
 
     static void planeOccludedFunc(const RTCOccludedFunctionNArguments *args);
 
-    bool isOnSensor(const RTCRayHit& rayHit) const;
+    [[nodiscard]] bool isOnSensor(const RTCRayHit& rayHit) const;
 
     double planeIntersect(Ray &rayhit) const;
 

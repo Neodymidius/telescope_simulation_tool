@@ -112,6 +112,6 @@ void Paraboloid::paraboloidIntersectFunc(const RTCIntersectFunctionNArguments *a
 }
 
 
-void Paraboloid::paraboloidOccludedFunc(const RTCOccludedFunctionNArguments *args) { }
+void Paraboloid::paraboloidOccludedFunc([[maybe_unused]] const RTCOccludedFunctionNArguments *args) { }
 
 

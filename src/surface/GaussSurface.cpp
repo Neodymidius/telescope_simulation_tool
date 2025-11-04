@@ -15,6 +15,6 @@ bool GaussSurface::simulate_surface(Ray &ray) const
 }
 
 void
-GaussSurface::set_surface_parameter(std::string model, std::string shadowing, double factor, double shadowing_factor) {
+GaussSurface::set_surface_parameter([[maybe_unused]] std::string model, [[maybe_unused]] std::string shadowing, [[maybe_unused]] double factor, [[maybe_unused]] double shadowing_factor) {
 
 }

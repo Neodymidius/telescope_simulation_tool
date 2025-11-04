@@ -65,7 +65,7 @@ void Plane::planeIntersectFunc(const RTCIntersectFunctionNArguments *args) {
     rayhit->hit.Ng_z = -1.0*nz;
 }
 
-void Plane::planeOccludedFunc(const RTCOccludedFunctionNArguments *args) {
+void Plane::planeOccludedFunc([[maybe_unused]] const RTCOccludedFunctionNArguments *args) {
 
 }
 

@@ -9,7 +9,7 @@ Pore::Pore() {
 
 }
 
-Pore::Pore(double pwidth, double plength, Vec3fa protation, Vec3fa ptranslation,  std::string material_path, std::string material) {
+Pore::Pore(double pwidth, double plength, Vec3fa protation, Vec3fa ptranslation,  [[maybe_unused]] std::string material_path, [[maybe_unused]] std::string material) {
     width = pwidth;
     length = plength;
     rotation = protation;

@@ -85,7 +85,7 @@ inline Vec3fa reflect(const Vec3fa& v, const Vec3fa& n)
     return v - 2.0f * dot(v, n) * n;
 }
 
-inline Vec3fa get_translation(const Vec3fa& target, const Vec3fa& v)
+inline Vec3fa get_translation([[maybe_unused]] const Vec3fa& target, const Vec3fa& v)
 {
     return {0 - v.x, 0 - v.y, 1 - v.z};
 }
@@ -226,7 +226,7 @@ inline Vec3fa rotate_to_Z(const Vec3fa& v, const Vec3fa& n_raw) {
     }
 
     axis = axis / s;                             // normalize
-    float theta = std::atan2(s, c);        // robust angle
+    [[maybe_unused]] float theta = std::atan2(s, c);        // robust angle
     return axis;
 }
 
