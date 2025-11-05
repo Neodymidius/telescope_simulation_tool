@@ -1,6 +1,7 @@
-//
-// Created by neo on 05.12.24.
-//
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
+
 #include "Wolter.h"
 #include <string>
 

@@ -1,6 +1,6 @@
-//
-// Created by neo on 4/19/25.
-//
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 
 #ifndef VEC3FA_H
 #define VEC3FA_H

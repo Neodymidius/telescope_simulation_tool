@@ -1,6 +1,6 @@
-//
-// Created by neo on 28.05.25.
-//
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 /**
  * From Paper: Microfacet Models for Refraction through Rough Surfaces by Walter et al. (2007)
 **/

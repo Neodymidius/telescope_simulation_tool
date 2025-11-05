@@ -1,6 +1,6 @@
-//
-// Created by neo on 23.01.25.
-//
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 
 #ifndef SIXTE_SHAPE_H
 #define SIXTE_SHAPE_H

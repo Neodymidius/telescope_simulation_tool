@@ -1,6 +1,6 @@
-//
-// Created by neo on 20.03.24.
-//
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 
 #ifndef SIXTE_HYPERBOLOID_H
 #define SIXTE_HYPERBOLOID_H

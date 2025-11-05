@@ -1,6 +1,6 @@
-//
-// Created by neo on 21.02.24.
-//
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 
 #ifndef SIXTE_PLANE_H
 #define SIXTE_PLANE_H
