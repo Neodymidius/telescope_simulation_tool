@@ -1,7 +1,6 @@
-//
-// Created by neo on 31.10.25.
-//
-
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 #ifndef RAYTRACINGTOOLS_RANDOM_H
 #define RAYTRACINGTOOLS_RANDOM_H
 

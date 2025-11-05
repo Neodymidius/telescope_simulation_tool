@@ -1,6 +1,6 @@
-//
-// Created by neo on 07.11.24.
-//
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 
 #ifndef SIXTE_SPIDER_H
 #define SIXTE_SPIDER_H

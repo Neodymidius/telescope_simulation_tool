@@ -1,6 +1,6 @@
-//
-// Created by neo on 25.08.25.
-//
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 
 #ifndef SIXTE_LOBSTEREYEOPTIC_H
 #define SIXTE_LOBSTEREYEOPTIC_H

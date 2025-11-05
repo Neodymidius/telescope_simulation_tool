@@ -1,6 +1,6 @@
-//
-// Created by neo on 14.01.25.
-//
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 
 #ifndef SIXTE_RAYTRACING_H
 #define SIXTE_RAYTRACING_H

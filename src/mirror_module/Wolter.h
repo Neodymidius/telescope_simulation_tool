@@ -1,5 +1,6 @@
-//
-// Created by neo on 05.12.24.
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 //  Paper to be referenced for the math: "Geometries for Grazing Incidence Mirrors" by Pivovaroff et al. 2023
 //  https://link.springer.com/10.1007/978-981-16-4544-0_2-1
 //

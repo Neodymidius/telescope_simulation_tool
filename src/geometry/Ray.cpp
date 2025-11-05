@@ -1,7 +1,6 @@
-//
-// Created by neo on 21.02.24.
-//
-
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 #include "Ray.h"
 
 Ray::Ray(const Vec3fa &position, Vec3fa& direction, double energy)

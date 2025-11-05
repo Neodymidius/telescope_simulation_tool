@@ -1,6 +1,6 @@
-//
-// Created by neo on 27.08.25.
-//
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 
 #include <iostream>
 #include "Pore.h"

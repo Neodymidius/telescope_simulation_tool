@@ -1,6 +1,6 @@
-//
-// Created by neo on 28.05.25.
-//
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 
 #ifndef SIXTE_DUMMY_H
 #define SIXTE_DUMMY_H

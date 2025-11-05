@@ -1,6 +1,6 @@
-//
-// Created by neo on 28.01.25.
-//
+/*
+Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
+*/
 
 #include "EmbreeScene.h"
 
