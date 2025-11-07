@@ -11,7 +11,7 @@ Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
 #include "geometry/Ray.h"
 #include "mirror_module/MirrorModule.h"
 #include "mirror_module/Wolter.h"
-#include "mirror_module/EmbreeScene.h"
+#include "embree/EmbreeScene.h"
 
 #include "surface/GaussSurface.h"
 #include "surface/SurfaceModel.h"

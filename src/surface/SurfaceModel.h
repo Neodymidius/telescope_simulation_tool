@@ -17,6 +17,8 @@ public:
         : surface_strategy_(std::move(surface_strategy)) {}
     bool simulate_surface(Ray &ray) const;
     void set_surface_parameter(std::string model, std::string shadowing, double factor, double shadowing_factor);
+
+    static std::shared_ptr<SurfaceModel> get_surface_model(const std::string &model);
 private:
     std::unique_ptr<SurfaceStrategy> surface_strategy_;
 };
