@@ -11,7 +11,7 @@ Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
 #include "mirror_module/MirrorModule.h"
 #include "shape/Paraboloid.h"
 #include "shape/Hyperboloid.h"
-#include "mirror_module/EmbreeScene.h"
+#include "embree/EmbreeWolter.h"
 
 #include "shape/Shape.h"
 #include "surface/SurfaceModel.h"
@@ -25,14 +25,9 @@ Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
 
 class Wolter final : public virtual MirrorModule {
 public:
-    double focal_length;
-    double outer_radius;
-    double inner_radius;
-    int number_of_shells;
+    explicit Wolter(const XMLData& xml_data);
 
     ~Wolter() override = default;
-
-    explicit Wolter(const XMLData& xml_data);
 
     Wolter(const Wolter& o) = default;
 
@@ -41,18 +36,26 @@ public:
     [[nodiscard]] std::unique_ptr<MirrorModule> clone() const override {
         return std::make_unique<Wolter>(*this);
     }
+
     std::optional<Ray> ray_trace(Ray &ray) override;
+
     void set_surface_parameter(std::string model, std::string shadowing, double factor, double shadowing_factor) override;
     double get_focal_length() override;
 private:
     double mirror_height;
     double distance_to_mirror;
     double sensor_offset;
+    double focal_length;
+    double outer_radius;
+    double inner_radius;
+    int number_of_shells;
 
-    EmbreeScene shapes;
+    EmbreeWolter embree_scene_;
 
     void create_parameters(double new_radius, Paraboloid_parameters &p_pars, Hyperboloid_parameters &h_pars) const;
     void create(XMLData xml_data) override;
+
+
 };
 
 
