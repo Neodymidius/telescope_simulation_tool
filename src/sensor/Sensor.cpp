@@ -12,3 +12,7 @@ Sensor::Sensor(std::string file_name, const Vec3fa &position) {
     filename = file_name;
     Sensor::position = position;
 }
+
+Sensor::Sensor(Plane_parameters plane_parameters) {
+    plane_ = Plane(plane_parameters);
+}
