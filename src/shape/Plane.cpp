@@ -4,7 +4,12 @@ Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
 
 #include "Plane.h"
 
-Plane::Plane(){}
+Plane::Plane() : a_(0), b_(0), c_(0), d_(0), sensor_x_(0), sensor_y_(0) {
+}
+
+Plane::Plane(const Plane_parameters &parameters) : a_(parameters.a), b_(parameters.b), c_(parameters.c), d_(parameters.d),
+                                            sensor_x_(parameters.sensor_x), sensor_y_(parameters.sensor_y), planeParameters(parameters)
+{}
 
 Plane::Plane(const double a, const double b, const double c, const double d, const double sensor_x = -1,
              const double sensor_y = -1) : a_(a), b_(b), c_(c), d_(d), sensor_x_(sensor_x), sensor_y_(sensor_y),
@@ -66,15 +71,6 @@ void Plane::planeIntersectFunc(const RTCIntersectFunctionNArguments *args) {
 }
 
 void Plane::planeOccludedFunc([[maybe_unused]] const RTCOccludedFunctionNArguments *args) {
-
-}
-
-
-bool Plane::isOnSensor(const RTCRayHit& rayHit) const{
-    auto hitZ = rayHit.ray.org_z + rayHit.ray.tfar *  rayHit.ray.dir_z;
-    if (fabs(hitZ + d_) > fabs(0.001f))
-        return false;
-    return true;
 
 }
 

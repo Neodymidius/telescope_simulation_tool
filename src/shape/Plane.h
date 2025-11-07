@@ -6,7 +6,6 @@ Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
 #define SIXTE_PLANE_H
 
 #include "geometry/Ray.h"
-#include "sensor/Sensor.h"
 #include <embree4/rtcore.h>
 
 struct Plane_parameters {
@@ -24,6 +23,8 @@ public:
 
     Plane();
 
+    explicit Plane(const Plane_parameters &parameters);
+
     explicit Plane(double a, double b, double c, double d, double sensor_x, double sensor_y);
 
     static void planeBoundsFunc(const RTCBoundsFunctionArguments *args);
@@ -31,8 +32,6 @@ public:
     static void planeIntersectFunc(const RTCIntersectFunctionNArguments *args);
 
     static void planeOccludedFunc(const RTCOccludedFunctionNArguments *args);
-
-    [[nodiscard]] bool isOnSensor(const RTCRayHit& rayHit) const;
 
     double planeIntersect(Ray &rayhit) const;
 
