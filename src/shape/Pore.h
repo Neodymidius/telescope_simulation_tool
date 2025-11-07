@@ -9,14 +9,16 @@ Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
 #include "geometry/Ray.h"
 #include "Plane.h"
 #include "lib/random.h"
-#include "surface/SurfaceStrategy.h"
-
+#include "surface/SurfaceModel.h"
+#include "surface/GaussSurface.h"
+#include "surface/Microfacet.h"
 
 class Pore {
 public:
     Pore();
 
-    Pore(double pwidth, double plength, Vec3fa protation, Vec3fa ptranslation, std::string material_path, std::string material);
+    Pore(double pwidth, double plength, Vec3fa protation, Vec3fa ptranslation, std::string material_path,
+        std::string material, const std::shared_ptr<SurfaceModel> &surface);
 
     void set_rotation(Vec3fa protation);
 
@@ -36,6 +38,7 @@ private:
     Vec3fa rotation{};
     Vec3fa translation{};
     Plane wall1, wall2, wall3, wall4, floor;
+    std::shared_ptr<SurfaceModel> surface;
 
 
     int findInterection(Ray &ray);

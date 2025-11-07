@@ -9,7 +9,8 @@ Pore::Pore() {
 
 }
 
-Pore::Pore(double pwidth, double plength, Vec3fa protation, Vec3fa ptranslation,  [[maybe_unused]] std::string material_path, [[maybe_unused]] std::string material) {
+Pore::Pore(double pwidth, double plength, Vec3fa protation, Vec3fa ptranslation, [[maybe_unused]] std::string material_path,
+    [[maybe_unused]] std::string material, const std::shared_ptr<SurfaceModel> &surface) {
     width = pwidth;
     length = plength;
     rotation = protation;
@@ -19,6 +20,7 @@ Pore::Pore(double pwidth, double plength, Vec3fa protation, Vec3fa ptranslation,
     wall3 = Plane(0, 1, 0, -width, 0, 0);
     wall4 = Plane(1, 0, 0, 0, 0, 0);
     floor = Plane(0, 0, 1, 0, 0, 0);
+    Pore::surface = surface;
 
 }
 
