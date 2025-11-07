@@ -6,14 +6,12 @@ Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
 #include <string>
 
 Wolter::Wolter(const XMLData& xml_data) {
-    shapes = EmbreeScene();
     Wolter::create(xml_data);
 }
 
 std::optional<Ray> Wolter::ray_trace(Ray &ray) {
-    return shapes.ray_trace(ray);
+    return embree_scene_.ray_trace(ray);
 }
-
 
 void Wolter::create_parameters(const double new_radius, Paraboloid_parameters &p_pars, Hyperboloid_parameters &h_pars) const {
     const double local_theta = asin(new_radius/focal_length)/4;
@@ -64,7 +62,7 @@ void Wolter::create(XMLData xml_data) {
 
 
     if (spider_flag == "true")
-        shapes.spider = Spider(spider_path, spider_position);
+        embree_scene_.spider = Spider(spider_path, spider_position);
 
     std::string surface_model = raytracing.child("surface").attributeAsString("model");
     std::string material_path = raytracing.child("surface").attributeAsString("material_path");
@@ -134,8 +132,8 @@ void Wolter::create(XMLData xml_data) {
                 h_pars.surface = std::make_unique<SurfaceModel>(std::make_unique<Dummy>());
             }
 
-            shapes.hyperboloids.emplace_back(h_pars);
-            shapes.paraboloids.emplace_back(p_pars);
+            embree_scene_.hyperboloids.emplace_back(h_pars);
+            embree_scene_.paraboloids.emplace_back(p_pars);
 
         }
 
@@ -190,21 +188,21 @@ void Wolter::create(XMLData xml_data) {
                 h_pars.surface = std::make_unique<SurfaceModel>(std::make_unique<Dummy>());
             }
 
-            shapes.hyperboloids.emplace_back(h_pars);
-            shapes.paraboloids.emplace_back(p_pars);
+            embree_scene_.hyperboloids.emplace_back(h_pars);
+            embree_scene_.paraboloids.emplace_back(p_pars);
 
         }
     }
-    shapes.sensor = Plane{0, 0, 1, -h_pars.c * 2 + sensor_offset, sensor_x, sensor_y};
-    shapes.scene = shapes.initializeScene(shapes.device);
+    embree_scene_.sensor = Sensor{Plane_parameters{0, 0, 1, -h_pars.c * 2 + sensor_offset, sensor_x, sensor_y, {}, 0}};
+    embree_scene_.initializeScene();
 
 }
 
-void Wolter::set_surface_parameter(std::string model, std::string shadowing, double factor, double shadowing_factor) {
-    for (auto &paraboloid : shapes.paraboloids) {
+void Wolter::set_surface_parameter(const std::string model, const std::string shadowing, const double factor, const double shadowing_factor) {
+    for (auto &paraboloid : embree_scene_.paraboloids) {
         paraboloid.surface->set_surface_parameter(model, shadowing, factor, shadowing_factor);
     }
-    for (auto &hyperboloid : shapes.hyperboloids) {
+    for (auto &hyperboloid : embree_scene_.hyperboloids) {
         hyperboloid.surface->set_surface_parameter(model, shadowing, factor, shadowing_factor);
     }
 
