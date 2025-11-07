@@ -6,8 +6,6 @@ Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
 #define SURFACESTRATEGY_H
 
 #include "geometry/Ray.h"
-#include <optional>
-
 
 class SurfaceStrategy {
 public:
