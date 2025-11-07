@@ -13,13 +13,15 @@ set(RAYTRACING_SOURCES
         surface/GaussSurface.cpp
         surface/SurfaceModel.cpp
         surface/SurfaceStrategy.cpp
-        mirror_module/EmbreeScene.cpp
+        embree/EmbreeScene.cpp
         sensor/Sensor.cpp
         surface/Dummy.cpp
-        mirror_module/LobsterEyeOptic.cpp
+        mirror_module/LobsterEyeOptics.cpp
         surface/Microfacet.cpp
-        shape/OpticalMesh.cpp
+        shape/MicroPoreOptics.cpp
         lib/XMLData.cpp
+        embree/EmbreeWolter.cpp
+        embree/EmbreeLobsterEyeOptics.cpp
 
 )
 
@@ -36,17 +38,19 @@ set(RAYTRACING_HEADERS
         surface/GaussSurface.h
         surface/SurfaceModel.h
         surface/SurfaceStrategy.h
-        mirror_module/EmbreeScene.h
+        embree/EmbreeScene.h
         sensor/Sensor.h
         lib/stl_reader.h
         surface/Dummy.h
         surface/Microfacet.h
-        mirror_module/LobsterEyeOptic.h
-        shape/OpticalMesh.h
+        mirror_module/LobsterEyeOptics.h
+        shape/MicroPoreOptics.h
         shape/Pore.cpp
         shape/Pore.h
         lib/random.h
         lib/XMLData.h
+        embree/EmbreeWolter.h
+        embree/EmbreeLobsterEyeOptics.h
 
 )
 
@@ -70,7 +74,6 @@ FIND_PACKAGE(embree QUIET)
 IF (embree_FOUND)
     message(STATUS "✔ Found EMBREE ${MyLib_VERSION}")
 ENDIF ()
-message(STATUS ${CMAKE_INSTALL_LIBDIR})
 install(TARGETS raytracing_objects
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
