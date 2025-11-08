@@ -6,6 +6,7 @@ Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
 #include <string>
 
 Wolter::Wolter(const XMLData& xml_data) {
+    embree_scene_ = EmbreeWolter();
     Wolter::create(xml_data);
 }
 
@@ -95,9 +96,6 @@ void Wolter::create(XMLData xml_data) {
             h_pars.Yh_min = h_pars.b * sqrt(pow(h_pars.Xh_min - h_pars.c, 2) / pow(h_pars.a, 2) - 1);
 
             if (first_shell) {
-                /*p_pars.angle_x = 0.03 * M_PI / 180;
-                p_pars.angle_y = 0.03 * M_PI / 180;;
-                */
                 p_pars.origin = Vec3fa(0,0, 0);
                 first_shell_height = p_pars.Xp_max;
                 first_shell=false;
