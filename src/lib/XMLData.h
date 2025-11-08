@@ -22,7 +22,7 @@ Copyright 2025 Remeis-Sternwarte, Friedrich-Alexander-Universitaet
 
 #pragma once
 
-#include <pugixml.hpp>
+#include "pugixml.hpp"
 #include <stdexcept>
 #include <string>
 #include <vector>
