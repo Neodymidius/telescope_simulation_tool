@@ -119,6 +119,7 @@ void EmbreeWolter::initializeScene() {
         // Commit the geometry and attach it to the scene.
         rtcCommitGeometry(geometry);
         para->geomID = rtcAttachGeometry(scene_, geometry);
+        sensor.geomID = para->geomID;
         rtcReleaseGeometry(geometry);
     }
     if (!spider.filename.empty())
