@@ -4,6 +4,7 @@ Copyright (C) 2025  Neo Reinmann (neoreinmann@gmail.com)
 #include "LobsterEyeOptics.h"
 
 LobsterEyeOptics::LobsterEyeOptics(const XMLData &xml_data) {
+    embree_scene_ = EmbreeLobsterEyeOptics();
     LobsterEyeOptics::create(xml_data);
 }
 
