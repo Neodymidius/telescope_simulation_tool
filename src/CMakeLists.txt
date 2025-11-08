@@ -22,6 +22,8 @@ set(RAYTRACING_SOURCES
         lib/XMLData.cpp
         embree/EmbreeWolter.cpp
         embree/EmbreeLobsterEyeOptics.cpp
+        lib/pugixml.cpp
+        shape/Pore.cpp
 
 )
 
@@ -45,30 +47,23 @@ set(RAYTRACING_HEADERS
         surface/Microfacet.h
         mirror_module/LobsterEyeOptics.h
         shape/MicroPoreOptics.h
-        shape/Pore.cpp
         shape/Pore.h
         lib/random.h
         lib/XMLData.h
         embree/EmbreeWolter.h
         embree/EmbreeLobsterEyeOptics.h
-
+        lib/pugiconfig.hpp
+        lib/pugixml.hpp
 )
 
 # Create a shared library target for raytracing components.
-add_library(raytracing_objects SHARED  ${RAYTRACING_SOURCES} ${RAYTRACING_HEADERS})
+add_library(raytracing_objects SHARED ${RAYTRACING_SOURCES} ${RAYTRACING_HEADERS})
+
 set_property(TARGET raytracing_objects PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 target_include_directories(raytracing_objects PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}       # the raytracing directory itself
 )
-target_link_libraries(raytracing_objects PUBLIC
-        compiler_flags
-        )
-
-find_package(pugixml REQUIRED)
-IF (pugixml_FOUND)
-    message(STATUS "✔ Found pugixml ${MyLib_VERSION}")
-ENDIF ()
 
 FIND_PACKAGE(embree QUIET)
 IF (embree_FOUND)
@@ -77,4 +72,4 @@ ENDIF ()
 install(TARGETS raytracing_objects
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
-target_link_libraries(raytracing_objects PUBLIC embree pugixml::pugixml)
+target_link_libraries(raytracing_objects PUBLIC compiler_flags embree)
