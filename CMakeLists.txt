@@ -6,6 +6,7 @@ project(RaytracingTools LANGUAGES CXX)
 # You can point CMake to a custom Embree with: -Dembree_DIR=/path/to/embree/cmake
 # or EMBREE_ROOT, etc., depending on your Embree install.
 
+
 # ---- Common compiler flags (your raytracing library links against 'compiler_flags') ----
 add_library(compiler_flags INTERFACE)
 target_compile_features(compiler_flags INTERFACE cxx_std_20)
@@ -17,7 +18,7 @@ endif()
 
 # ---- Add the library subdirectory ----
 add_subdirectory(src)
-
+# add_subdirectory(src_optix)
 # ---- Tool executable ----
 add_executable(raytracing tools_raytracing/raytracing.cpp)
 
@@ -34,7 +35,6 @@ set_target_properties(raytracing PROPERTIES
     BUILD_RPATH "${CMAKE_INSTALL_PREFIX}/lib"
     INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib"
 )
-message(PROJECT_SOURCE_DIR="${CMAKE_INSTALL_BINDIR}")
 # ---- Install rules ----
 include(GNUInstallDirs)
 install(TARGETS raytracing
