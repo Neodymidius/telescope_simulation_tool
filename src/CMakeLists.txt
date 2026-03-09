@@ -22,6 +22,7 @@ set(RAYTRACING_SOURCES
         lib/XMLData.cpp
         embree/EmbreeWolter.cpp
         embree/EmbreeLobsterEyeOptics.cpp
+        lib/pugixml.cpp
 
 )
 
@@ -51,6 +52,8 @@ set(RAYTRACING_HEADERS
         lib/XMLData.h
         embree/EmbreeWolter.h
         embree/EmbreeLobsterEyeOptics.h
+        lib/pugiconfig.hpp
+        lib/pugixml.hpp
 
 )
 
@@ -65,11 +68,6 @@ target_link_libraries(raytracing_objects PUBLIC
         compiler_flags
         )
 
-find_package(pugixml REQUIRED)
-IF (pugixml_FOUND)
-    message(STATUS "✔ Found pugixml ${MyLib_VERSION}")
-ENDIF ()
-
 FIND_PACKAGE(embree QUIET)
 IF (embree_FOUND)
     message(STATUS "✔ Found EMBREE ${MyLib_VERSION}")
@@ -77,4 +75,4 @@ ENDIF ()
 install(TARGETS raytracing_objects
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
-target_link_libraries(raytracing_objects PUBLIC embree pugixml::pugixml)
+target_link_libraries(raytracing_objects PUBLIC embree)
